@@ -1,0 +1,372 @@
+html, body {
+    margin: 0;
+    padding: 0;
+	
+}
+body {
+	background-color: #262626;
+	color:#cdcdcd;
+	font-family: "Avenir Next", "Avenir", sans-serif;
+}
+h2,h3 {
+ margin:0px
+}
+
+/***** grid css *****/
+.grid {
+	width: auto;
+}
+.grid:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.grid-pad {
+  padding: 20px 0 20px 20px;
+}
+.grid-pad > [class*='col-']:last-of-type {
+  padding-right: 20px;
+}
+[class*='col-'] {
+  float: left;
+  padding-right: 20px;
+}
+[class*='col-']:last-of-type {
+  padding-right: 0;
+}
+.col-2-3 {
+  width: 66.66%;
+}
+.col-1-3 {
+  width: 33.33%;
+}
+.col-1-2 {
+  width: 50%;
+}
+.col-1-4 {
+  width: 25%;
+}
+.col-1-8 {
+  width: 12.5%;
+}
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.right {
+	text-align:right;
+	padding-right:60px;
+}
+.seperator {
+	border-bottom: 1px solid #cdcdcd;
+	height:1px;
+	padding:0px;
+}
+
+/***** toggle switch css *****/
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/***** days buttons *****/
+.days input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  display:none;
+}
+.day {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  background-color: #ccc;
+  border-radius: 34px;
+  text-align:center;
+  padding:8px;
+  cursor:pointer;
+  color:black;
+}
+
+.days input:checked + .day{
+  background-color: #2196F3;
+}
+
+/***** trigger mode *****/
+  
+.triggermodes input[type="radio"] {
+	display: none;
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+  }
+input[type=radio] + .triggermode {
+    -webkit-filter: grayscale(100%);
+   filter: grayscale(100%);
+  }
+input[type=radio]:checked + .triggermode {
+    -webkit-filter: grayscale(0%);
+   filter: grayscale(0%);
+  }
+
+/***** tab swap *****/
+.tabs {
+	padding: 10px 0px 10px 0px;
+}
+.tab {
+	background-color:#424242;
+	display: inline-block;
+	height:40px;
+	width:40%;
+	line-height: 40px;
+	padding-left:10px;
+	cursor:pointer;
+	font-weight:bold;
+	border-radius:5px;
+	border-top:5px solid gray;
+	margin: 0 8% 10px 0;
+}
+.tabs input[type="radio"] {
+	display: none;
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+.tabs input[type=radio] + .tab {
+   border-top:5px solid gray;
+}
+.tabs input[type=radio]:checked + .tab {
+   border-top:5px solid orange;
+}
+.tabs #activeScheduleTab:checked ~ #activeSchedule {
+   display:block;
+}
+.tabs #activeScheduleTab:checked ~ #relaxSchedule {
+   display:none;
+}
+.tabs #relaxScheduleTab:checked ~ #relaxSchedule {
+   display:block;
+}
+.tabs #relaxScheduleTab:checked ~ #activeSchedule {
+   display:none;
+}
+/***** image center *****/
+.hero {
+   width:100%;
+   margin:auto;
+   display: flex;
+   align-items: center;
+   justify-content: center; /* not really needed with auto margin on img*/
+   background-color: black;
+}
+.hero img {
+   display: block;
+   width: 80%;
+   min-width:100px;
+   max-width: 350px; /*actual image width*/
+   height: auto; /* maintain aspect ratio*/
+   margin: auto; /*optional centering of image*/
+}
+
+/***** config *****/
+
+.gray-emoji{
+ -webkit-filter: grayscale(100%);
+   filter: grayscale(100%);
+}
+.big{
+  font-size:1.5em;
+}
+.big input {
+  font-size:1.2em;
+}
+.big input[type="number"] {
+	width:75px;
+	text-align:right;
+}
+input[type="time"] {
+	max-width:150px;
+}
+
+#menu .schedule-setting-item {
+	background-color:#424242;
+	width:90%;
+	overflow-y:hidden;
+	bottom:50px;
+	height: calc(100vh - 480px);
+	overflow-y:auto;
+}
+
+/***** menu *****/
+#menuToggle {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle #menuToggler {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  right: -7px; 
+  cursor: pointer;
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle #menuBar1, #menuToggle #menuBar2, #menuToggle #menuBar3 {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #cdcdcd;
+  border-radius: 3px;
+  opcatity:1;
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle #menuBar3 {
+  transform-origin: 0% 100%; 
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle #menuToggler:checked ~ #menuBar1 {
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #2196F3;
+}
+#menuToggle #menuToggler:checked ~ #menuBar2 {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle #menuToggler:checked ~ #menuBar3 {
+  transform: rotate(-45deg) translate(0, -1px);
+  background: #2196F3;
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu {
+  position: absolute;
+  right:-70px;
+  width: calc(100vw + 70px);
+  max-width:500px;
+  height: calc(100vh + 50px);
+  margin: -100px 0 0 -50px;
+  padding: 25px;
+  padding-top: 125px; 
+  background: #111;
+  -webkit-font-smoothing: antialiased;
+  visibility: hidden;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), visibility 0.5s;
+}
+#menuToggle #menuTitle {
+	position: relative;
+	top:-50px;
+	font-weight: bold;
+	font-size:x-large;
+}
+
+#menu section {
+	font-size:large;
+	font-weight:bold;
+	border-bottom: 1px solid #cdcdcd;
+	width:90%;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle #menuToggler:checked ~ #menu
+{
+  visibility: visible;
+  transform: none;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), visibility 0s;
+}
