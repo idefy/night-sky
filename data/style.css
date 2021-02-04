@@ -1,6 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
+	overflow:hidden;
 	
 }
 body {
@@ -8,8 +9,12 @@ body {
 	color:#cdcdcd;
 	font-family: "Avenir Next", "Avenir", sans-serif;
 }
+h1 {
+	margin-left:10px;
+	color: #EFEFEF;
+}
 h2,h3 {
- margin:0px
+ margin:0px;
 }
 
 /***** grid css *****/
@@ -34,6 +39,9 @@ h2,h3 {
 [class*='col-']:last-of-type {
   padding-right: 0;
 }
+.col-1-1 {
+  width: 100%;
+}
 .col-2-3 {
   width: 66.66%;
 }
@@ -56,7 +64,6 @@ h2,h3 {
 }
 .right {
 	text-align:right;
-	padding-right:60px;
 }
 .seperator {
 	border-bottom: 1px solid #cdcdcd;
@@ -129,47 +136,32 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/***** days buttons *****/
-.days input {
+/***** trigger mode *****/
+
+.triggermodes input {
   opacity: 0;
   width: 0;
   height: 0;
   display:none;
 }
-.day {
-  position: relative;
-  display: inline-block;
-  width: 34px;
-  height: 34px;
-  background-color: #ccc;
-  border-radius: 34px;
-  text-align:center;
-  padding:8px;
-  cursor:pointer;
-  color:black;
-}
-
-.days input:checked + .day{
-  background-color: #2196F3;
-}
-
-/***** trigger mode *****/
-  
-.triggermodes input[type="radio"] {
-	display: none;
-    margin:0;padding:0;
-    -webkit-appearance:none;
-       -moz-appearance:none;
-            appearance:none;
-  }
-input[type=radio] + .triggermode {
+input[type="radio"] + .triggermode {
     -webkit-filter: grayscale(100%);
    filter: grayscale(100%);
   }
-input[type=radio]:checked + .triggermode {
+input[type="radio"]:checked + .triggermode {
     -webkit-filter: grayscale(0%);
    filter: grayscale(0%);
   }
+
+input[type="checkbox"] + .triggermode {
+    -webkit-filter: grayscale(100%);
+   filter: grayscale(100%);
+  }
+input[type="checkbox"]:checked + .triggermode {
+    -webkit-filter: grayscale(0%);
+   filter: grayscale(0%);
+  }
+}
 
 /***** tab swap *****/
 .tabs {
@@ -179,14 +171,15 @@ input[type=radio]:checked + .triggermode {
 	background-color:#424242;
 	display: inline-block;
 	height:40px;
-	width:40%;
+	width:28%;
 	line-height: 40px;
 	padding-left:10px;
 	cursor:pointer;
 	font-weight:bold;
 	border-radius:5px;
 	border-top:5px solid gray;
-	margin: 0 8% 10px 0;
+	margin: 0 2% 10px 0;
+	font-size: larger;
 }
 .tabs input[type="radio"] {
 	display: none;
@@ -195,40 +188,29 @@ input[type=radio]:checked + .triggermode {
        -moz-appearance:none;
             appearance:none;
 }
-.tabs input[type=radio] + .tab {
+.tabs input[type="radio"] + .tab {
    border-top:5px solid gray;
 }
-.tabs input[type=radio]:checked + .tab {
+.tabs input[type="radio"]:checked + .tab {
    border-top:5px solid orange;
+}
+.tabs #activeScheduleTab:checked ~ #manualSchedule, #relaxSchedule {
+   display:none;
 }
 .tabs #activeScheduleTab:checked ~ #activeSchedule {
    display:block;
 }
-.tabs #activeScheduleTab:checked ~ #relaxSchedule {
+.tabs #relaxScheduleTab:checked ~ #manualSchedule, #activeSchedule {
    display:none;
 }
 .tabs #relaxScheduleTab:checked ~ #relaxSchedule {
    display:block;
 }
-.tabs #relaxScheduleTab:checked ~ #activeSchedule {
+.tabs #manualcheduleTab:checked ~ #manualSchedule {
+   display:block;
+}
+.tabs #manualScheduleTab:checked ~ #activeSchedule, #relaxSchedule {
    display:none;
-}
-/***** image center *****/
-.hero {
-   width:100%;
-   margin:auto;
-   display: flex;
-   align-items: center;
-   justify-content: center; /* not really needed with auto margin on img*/
-   background-color: black;
-}
-.hero img {
-   display: block;
-   width: 80%;
-   min-width:100px;
-   max-width: 350px; /*actual image width*/
-   height: auto; /* maintain aspect ratio*/
-   margin: auto; /*optional centering of image*/
 }
 
 /***** config *****/
@@ -236,6 +218,9 @@ input[type=radio]:checked + .triggermode {
 .gray-emoji{
  -webkit-filter: grayscale(100%);
    filter: grayscale(100%);
+}
+.huge{
+	font-size:2.2em;
 }
 .big{
   font-size:1.5em;
@@ -247,6 +232,9 @@ input[type=radio]:checked + .triggermode {
 	width:75px;
 	text-align:right;
 }
+.small{
+	font-size:0.6em;
+}
 input[type="time"] {
 	max-width:150px;
 }
@@ -256,7 +244,7 @@ input[type="time"] {
 	width:90%;
 	overflow-y:hidden;
 	bottom:50px;
-	height: calc(100vh - 480px);
+	height: calc(100vh - 190px);
 	overflow-y:auto;
 }
 
@@ -330,9 +318,9 @@ input[type="time"] {
  */
 #menu {
   position: absolute;
-  right:-70px;
+  right:-80px;
   width: calc(100vw + 70px);
-  max-width:500px;
+  max-width:490px;
   height: calc(100vh + 50px);
   margin: -100px 0 0 -50px;
   padding: 25px;
@@ -354,12 +342,14 @@ input[type="time"] {
 	font-size:x-large;
 }
 
-#menu section {
-	font-size:large;
+section {
+	font-size:1.6em;
 	font-weight:bold;
 	border-bottom: 1px solid #cdcdcd;
 	width:90%;
+	padding-bottom:10px;
 }
+
 
 /*
  * And let's slide it in from the left
@@ -369,4 +359,72 @@ input[type="time"] {
   visibility: visible;
   transform: none;
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), visibility 0s;
+}
+
+/***** image center *****/
+.hero {
+   width:100%;
+   margin:auto;
+   display: flex;
+   align-items: center;
+   justify-content: center; /* not really needed with auto margin on img*/
+   background-color: black;
+}
+.hero img {
+   display: block;
+   width: 80%;
+   min-width:100px;
+   max-width: 350px; /*actual image width*/
+   height: auto; /* maintain aspect ratio*/
+   margin: auto; /*optional centering of image*/
+}
+.hero div {
+	position:relative;
+    width: 80%;
+    min-width:100px;
+    max-width: 350px; /*actual image width*/
+    height: auto; /* maintain aspect ratio*/
+    margin: auto; /*optional centering of image*/
+    display:inline-block;
+}
+.hero div span {
+  content:'';
+  position:absolute;
+  left:0; top:0;
+  width:100%; height:100%;
+  display:inline-block;
+  background: linear-gradient(to right, rgba(0,0,0,0.95) 0%,rgba(255, 255, 255, 0) 100%);
+}
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  z-index:10;
+  min-width:350px;
+  box-shadow: 5px 5px 18px #111;
+}
+#timeEdit{
+	border: 1px solid black;
+	display:none;
+	background-color:#424242;
+}
+.btn {
+	display: inline-block;
+	cursor:pointer;
+	color: #262626;
+	padding: 10px;
+	background-color:#ccc;
+	border: 1px solid black;
+	min-width:75px;
+	text-align:center;
+	margin-left:10px;
+}
+.btn-highlight {
+	background-color:#2196F3;
+}
+.btn:hover{
+  border: 1px solid #00000000;
+  box-shadow: 0px 0px 4px 4px #0ff;
 }

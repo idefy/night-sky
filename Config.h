@@ -6,40 +6,34 @@
 
 #include "Arduino.h"
 #include <ArduinoJson.h>
-//#define USE_LittleFS
-
-#include <FS.h>
-#ifdef USE_LittleFS
-  #define SPIFFS LITTLEFS
-  #include <LITTLEFS.h> 
-#else
-  #include <SPIFFS.h>
-#endif 
+#include <time.h>
+#include <SPIFFS.h>
+#include "debug.h"
 
 struct SchedItem
 {
-  bool isOn; // true
-  long sTime; // 1140000
-  bool onWake; // true
-  bool mo; // true
-  bool tu; // true
-  bool we; // true
-  bool th; // true
-  bool fr; // true
-  bool sa; // false
-  bool su; // false
+  uint8_t day; 
+  bool wakeOn;
+  int wakeTime;
+  uint8_t wakeMoon;
+  uint8_t wakeStars;
+  bool sleepOn;
+  int sleepTime;
+  uint8_t sleepMoon;
+  uint8_t sleepStars;
 };
 
 class Config
 {
   public:
     Config();
-    int moonWake;
-    int moonSleep;
-    int starsWake;
-    int starsSleep;
-    SchedItem active[14];
-    SchedItem relax[14];
+    uint8_t mode;
+    //uint8_t moonWake;
+    uint8_t moonSleep;
+    //uint8_t starsWake;
+    uint8_t starsSleep;
+    SchedItem active[7];
+    SchedItem relax[7];
     void setDefaults();
     void fromJsonObject(DynamicJsonDocument doc);
     void fromJson(String input);
@@ -51,7 +45,8 @@ class Config
   private:
     bool _isInit;
     static const int JSON_SIZE = 6144;
-    static constexpr const char* const CONFIG_FILENAME = "/config.jsn"; 
+    static constexpr const char* const DFT_CONFIG_FILENAME = "/default.jsn";
+    static constexpr const char* const CONFIG_FILENAME = "/config.jsn";
 };
 
 #endif
