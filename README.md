@@ -2,7 +2,7 @@
 
 WIP. This is the required ESP32 code for Night-sky project.
 
-Link to the full project tutorial: TBD
+Link to the full project tutorial: https://www.instructables.com/Night-Sky-1/
 
 ## What is Night-sky ?
 Imagine a starry night with the moon slowly phasing out to put you to sleep.
